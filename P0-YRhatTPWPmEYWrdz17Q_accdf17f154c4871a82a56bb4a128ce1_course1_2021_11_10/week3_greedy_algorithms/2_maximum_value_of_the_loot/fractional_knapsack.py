@@ -2,10 +2,17 @@
 import sys
 
 def get_optimal_value(capacity, weights, values):
-    value = 0.
-    # write your code here
+    if capacity == 0 or len(weights) == 0:
+        return 0.
 
-    return value
+    prices = [v / w for v, w in zip(values, weights)]
+    m = prices.index(max(prices))
+    a = min(weights[m], capacity)
+    value = prices[m] * a
+    weights.pop(m)
+    values.pop(m)
+
+    return value + get_optimal_value(capacity, weights, values)
 
 
 if __name__ == "__main__":
