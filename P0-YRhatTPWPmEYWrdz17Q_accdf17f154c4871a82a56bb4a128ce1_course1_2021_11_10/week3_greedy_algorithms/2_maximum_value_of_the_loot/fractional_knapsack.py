@@ -12,7 +12,7 @@ def get_optimal_value(capacity, weights, values):
     weights.pop(m)
     values.pop(m)
 
-    return value + get_optimal_value(capacity, weights, values)
+    return value + get_optimal_value(capacity - a, weights, values)
 
 
 if __name__ == "__main__":
